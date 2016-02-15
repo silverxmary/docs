@@ -36,7 +36,7 @@ routes.IgnoreRoute("api/{*pathInfo}");
 
 Add a `HomeController` to return the `default.htm` page. Under the __Controllers__ folder add:
 
-```c#
+```cs
 public class HomeController : Controller
 {
     public ActionResult Index()
@@ -97,7 +97,7 @@ Open the the `WebServiceExamples.cs` file.
 
 #### 6.1. Add the `Authenticate` attribute to the `Hello` DTO:
 
-```c#
+```cs
 [Authenticate]
 public class Hello
 {
@@ -107,7 +107,7 @@ public class Hello
 
 #### 6.2. Add an `IAuthSession` property to the `HelloResponse` DTO:
 
-```c#
+```cs
 public class HelloResponse
 {
     public IAuthSession UserInfo { get; set; }
@@ -118,7 +118,7 @@ public class HelloResponse
 
 #### 6.3. Modify the `HelloService` to return the currently logged in user's `UserInfo` object
 
-```c#
+```cs
 public class HelloService : ServiceBase<Hello>
 {
 	protected override object Run(Hello request)
