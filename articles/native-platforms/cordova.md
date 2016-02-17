@@ -73,29 +73,41 @@ Now it's time to sit back, relax and open a beer. You've implemented Login and S
 
 ### Troubleshooting
 
-#### Command failed with exit code 65 when running ionic build
+#### Command failed with exit code 65 when running cordova build
 
 This means that the `InAppBrowser` plugin wasn't installed successfully by Cordova. Try any of the followings to fix this.
 
 * Reinstall the `InAppBrowser` plugin
 
 ```bash
-ionic plugin remove org.apache.cordova.inappbrowser
-ionic plugin add org.apache.cordova.inappbrowser
+cordova plugin remove cordova-plugin-inappbrowser
+cordova plugin add cordova-plugin-inappbrowser
 ```
 * Remove the platform and re add it
 
+iOS:
+
 ```bash
-ionic platform remove ios
-ionic platform add ios
+cordova platform remove ios
+cordova platform add ios
+```
+Android:
+
+```bash
+cordova platform remove android
+cordova platform add android
 ```
 
 * Copy the contents from the plugin to the platform plugins
 
+iOS:
 ```bash
-cp plugins/org.apache.cordova.inappbrowser/src/ios/* platforms/ios/[yourAppName]/Plugins/org.apache.cordova.inappbrowser/
+cp plugins/cordova-plugin-inappbrowser/src/ios/* platforms/ios/[yourAppName]/Plugins/cordova-plugin-inappbrowser/
 ```
-
+Android:
+```bash
+cp plugins/cordova-plugin-inappbrowser/src/android/* platforms/android/[yourAppName]/Plugins/cordova-plugin-inappbrowser/
+```
 #### Get a blank page with an OK after signin
 
 This means that the `InAppBrowser` plugin wasn't installed successfully by Cordova. See the previous section to learn how to solve this.

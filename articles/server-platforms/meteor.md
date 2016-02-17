@@ -3,7 +3,7 @@ title: Meteor Tutorial
 name: Meteor
 alias:
   - Meteor
-language: 
+language:
   - Javascript
 framework:
   - Meteor
@@ -18,8 +18,15 @@ snippets:
 
 ## Meteor Tutorial
 
+You can get started by either downloading the seed project or if you would like to add Auth0 to an existing application you can follow the tutorial steps.
 
-<%= include('../_includes/package', {
+::: panel-info System Requirements
+This tutorial and seed project have been tested with the following:
+
+* Meteor 1.2.1
+:::
+
+<%= include('../_includes/_package', {
   pkgRepo: 'meteor-auth0',
   pkgBranch: 'master',
   pkgPath: 'examples/auth0-meteor-sample',
@@ -27,7 +34,7 @@ snippets:
   pkgType: 'server' + account.clientParam
 }) %>
 
-**If you have an existing application, follow the steps below.**
+**If you have an existing application, please follow the steps below.**
 
 ### 1. Installation
 
@@ -45,17 +52,21 @@ ${snippet(meta.snippets.setup)}
 
 Our meteor package reads this information and creates a Lock instance with these settings.
 
-### 3. Implement the login
+### 3. Specify the callback on Auth0 Dashboard
+
+${include('./_callbackRegularWebApp')}
+
+### 4. Implement the login
 
 To implement the login, call the `.show()` method of Auth0's `lock` instance on the client of your Meteor project.
 
 ${snippet(meta.snippets.use)}
 
-In this case we are using a Meteor Template called `Auth0Login`.  
+In this case we are using a Meteor Template called `Auth0Login`.
 
 To discover all the available arguments for `lock.show`, see [.show\(\[options, callback\]\)](/libraries/lock#-show-options-callback-).
 
-### 4. Retrieve user information
+### 5. Retrieve user information
 
 You can retrieve information about the user's profile using the `currentUser` helper. The information will be under `currentUser.services.auth0`.
 
@@ -81,9 +92,9 @@ var userName = Meteor.user().services.auth0.name;
 
 To discover all the available properties of a user's profile, see [user-profile](/user-profile). Note that the properties available depend on the social provider used.
 
-### 5. Log out
+### 6. Log out
 
-To log out you can just call `Meteor.logout();` on the client side of your application. 
+To log out you can just call `Meteor.logout();` on the client side of your application.
 
 ```js
 'click button.logout': function () {
@@ -91,6 +102,6 @@ To log out you can just call `Meteor.logout();` on the client side of your appli
  }
 ```
 
-### 6. All done!
+### 7. All done!
 
 You have completed the implementation of Login and Signup with Auth0 and Meteor.

@@ -37,7 +37,7 @@ ember install auth0-ember-simple-auth
 ember generate scaffold-auth0
 ```
 
-__Note:__ If you are not already using ember-cli, see [ember-cli migration](http://www.ember-cli.com/user-guide/#migrating-an-existing-project-that-doesnt-yet-use-ember-cli).
+__Note:__ If you are not already using ember-cli, see [ember-cli migration](http://ember-cli.com/user-guide/#migrating-an-existing-ember-project-that-doesnt-use-ember-cli).
 
 ### 2. Configure the add-on
 
@@ -122,7 +122,7 @@ Add login and logout links. These routes are handled according to the simple-aut
 {{#if session.isAuthenticated}}
   <a {{ action 'invalidateSession' }}>Logout</a>
 {{else}}
-  <a {{ action 'authenticateSession' }}>Login</a>
+  <a {{ action 'sessionRequiresAuthentication' }}>Login</a>
 {{/if}}
 ```
 

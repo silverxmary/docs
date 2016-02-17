@@ -6,7 +6,7 @@ This is the repository for the Auth0 documentation.
 * Consult the [WORDS](WORDS.md) document for Auth0 specific spellings and definitions
 * Always use absolute links from the root of the site. Note, that your links should NOT start with `/docs` or any other base path. If the site is hosted with a base like on `auth0.com/docs` the links will be corrected at runtime.
 * Do not hard code links to auth0 sites like `docs.auth0.com`, `manage.auth0.com`, etc. Use variables instead such as `${uiUrl}`
-* Name files with all lowercase using dashes (-) to seperate words. If using a year in the file name it should be in the format YYYY-MM-DD. For example, `this-is-my-file.md` or `this-is-a-title-2015-10-01.md`.
+* Name files with all lowercase using dashes (-) to separate words. If using a year in the file name it should be in the format YYYY-MM-DD. For example, `this-is-my-file.md` or `this-is-a-title-2015-10-01.md`.
 * Do not store images in external locations like Dropbox, CloudUp, or the Auth0 CDN. Link to images in this repo using `![](/media/folder/image-name.png)`. The image will get automatically uploaded to the CDN and the link will be transformed.
 * Try to keep images to no more than 750 pixels wide
 * Run all images through [TinyPNG](https://tinypng.com/).
@@ -40,6 +40,44 @@ Additionally, you can send a context to the included document.
 
 ```
 <%= include('../_mydocument.md', { key: 'value', something: true }) %>
+```
+
+### Markdown
+Markdown on this site confirms to the [CommonMark spec](http://commonmark.org/). Additionally, there are a few special markdown features available as described below.
+
+#### Warning banner
+You can add a warning banner to the top of a page to notify that a page is deprecated or other similar messages.
+
+```
+::: warning-banner
+You message here
+:::
+```
+
+
+#### Panels
+Panels can be useful to separate information from the main body of a document.
+
+```
+::: panel-primary This is a panel
+Panel content
+:::
+
+::: panel-warning This is a warning
+Panel content
+:::
+
+::: panel-info This is info
+Panel content
+:::
+
+::: panel-danger This is a dangerous
+Panel content
+:::
+
+::: panel-success This is good
+Panel content
+:::
 ```
 
 ### Screenshots
@@ -101,6 +139,43 @@ ${snippet(meta.snippets.use)}
 After you publish the doc update, the new quickstart will automatically appear on both docs and manage.
 
 Additionally, the quickstart configuration is also in this repository here: [quickstart.yml](/quickstart.yml).
+
+## Updates Feed
+Publishing content updates is fairly easy. Just create a yml file in the `/updates` folder in the format `YYYY-MM-DD.yml`. The document should be in the following format. There are three sections of content added, changed, and fixed. If you are releasing a new thing (such as a new tutorial, document, or new version of an SDK) put it here. Otherwise use changed or fixed.
+
+```
+added:
+  -
+    title: "Name of new thing"
+    tags:
+      - tag1
+      - tag2
+    description: |
+      The description can be as long as it needs, but keep it reasonable. If you need more you should probably write a separate document. Descriptions can contain markdown such as [link](https://auth0.com) or `code snippets`.
+  -
+    title: "Name of update"
+    tags:
+      - tag1
+      - tag2
+    description: |
+      The description can be as long as it needs, but keep it reasonable. If you need more you should probably write a separate document. Descriptions can contain markdown such as [link](https://auth0.com) or `code snippets`.
+changed:
+  -
+    title: "Name of thing that changed or was removed"
+    tags:
+      - tag1
+      - tag2
+    description: |
+      The description can be as long as it needs, but keep it reasonable. If you need more you should probably write a separate document. Descriptions can contain markdown such as [link](https://auth0.com) or `code snippets`.
+fixed:
+  -
+    title: "Name of bug fixed"
+    tags:
+      - tag1
+      - tag2
+    description: |
+      The description can be as long as it needs, but keep it reasonable. If you need more you should probably write a separate document. Descriptions can contain markdown such as [link](https://auth0.com) or `code snippets`.
+```
 
 ## API
 
@@ -192,3 +267,15 @@ When writing docs you can use the following variables instead of hard coding the
 | `account.clientId`     | The Client ID of the current Auth0 app.            | `YOUR_CLIENT_ID`                       |
 | `account.clientSecret` | The Client Secret of the current Auth0 app.        | `YOUR_CLIENT_SECRET`                   |
 | `account.callback`     | The first callback URL of the current Auth0 app.   | `http://YOUR_APP.auth0.com/callback`   |
+
+## Issue Reporting
+
+If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+
+## Author
+
+[Auth0](auth0.com)
+
+## License
+
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.

@@ -3,7 +3,7 @@ title: Socket.io Tutorial
 name: Socket.io
 alias:
   - socket.io
-language: 
+language:
   - Javascript
 framework:
   - socket.io
@@ -18,6 +18,11 @@ snippets:
 
 ## Socket.io Tutorial
 
+::: panel-info System Requirements
+This tutorial and seed project have been tested with the following:
+* Socket.io 1.4.5
+* NodeJS 4.2.4
+:::
 
 <%= include('../_includes/_package', {
   pkgRepo: 'socketio-jwt',
@@ -44,7 +49,7 @@ Install [socketio-jwt](https://github.com/auth0/socketio-jwt) from npm and save 
 
 ```
 npm install --save socketio-jwt
-``` 
+```
 
 ### 3. Add the Auth0 script and set the viewport
 
@@ -77,7 +82,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var socketioJwt = require('socketio-jwt');
 
-io.
+io
   .on('connection', socketioJwt.authorize({
     secret: Buffer('${account.clientSecret}', 'base64'),
     timeout: 15000 // 15 seconds to send the authentication message
@@ -95,11 +100,11 @@ Add the following snippet before the `</body>` on `index.html`
 ```html
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io(); 
+  var socket = io();
   socket.on('connect', function () {
 	socket.on('authenticated', function () {
-	//Do 
-						
+	//Do
+
 	})
 	.emit('authenticate', {token: userToken}); // send the jwt
   });
